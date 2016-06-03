@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <script type="text/javascript">
+        var citation_service_url = "https://dco.tw.rpi.edu/citation/";
+
+        var options = {
+            content: 'Default popover content',
+            html: true,
+            placement: 'auto top',
+        };
+
+        var invokePopover = function(source) {
+
+            escaped_id = source.id.replace("/", "\\/");
+
+            $(source).attr("data-content", "Changed!");
+            $('#' + escaped_id + '[data-toggle="popover"]').popover(options);
+            $('#' + escaped_id + '[data-toggle="popover"]').popover("toggle");
+
+            /* // This part is temporarily commented out for local testing of the popover feature.
+            $.ajax({
+                type: "GET",
+                crossOrigin: true,
+                url: citation_service_url + source.id,
+                success: function(data) {
+                    $(source).attr("data-content", data);
+                    $('#' + escaped_id + '[data-toggle="popover"]').popover(options);
+                    $('#' + escaped_id + '[data-toggle="popover"]').popover("toggle");
+                }
+            });
+            */
+        };
+    </script>
+</head>
+<body>
+        <h2>A badge:</h2>
+
+        <a id="11121/1015-6779-1645-7537-CC" href="#" title="PNAS Citation" data-toggle="popover" data-trigger="manual" data-content="Content" onclick="invokePopover(this)">
+            <img style="vertical-align: middle" src="https://dcotest.tw.rpi.edu/badges/badge?title=citation&text=PNAS&color=5C85D6">
+        </a>
+
+        <h2>Another badge:</h2>
+
+        <a id="11121/1015-6779-1645-7537-AA" href="#" title="PNAS Citation" data-toggle="popover" data-trigger="manual" data-content="Content" onclick="invokePopover(this)">
+            <img style="vertical-align: middle" src="https://dcotest.tw.rpi.edu/badges/badge?title=citation&text=PNAS&color=5C85D6">
+        </a>
+
+</body>
+</html>
+
+
+
+<!--/***** Dismiss all popovers by clicking outside, don't dismiss if clicking inside the popover content  **************/-->
+
+<!--//        $('html').on('click', function(e) {-->
+<!--//            console.log($(e.target).data('data-content'));-->
+<!--//            console.log($(e.target).parents().is('.popover.in'));-->
+<!--//-->
+<!--//            {-->
+<!--////                $('[data-toggle]').popover('hide');-->
+<!--//            }-->
+<!--//        });-->
+
+<!--//        $('html').on('click', function(e) {-->
+<!--//            if (typeof $(e.target).data('toggle') == 'undefined' &&-->
+<!--//                    !$(e.target).parents().is('.popover.in')) {-->
+<!--//                $('[data-toggle]').popover('hide');-->
+<!--//            }-->
+<!--//        });-->
+
+<!--//        $('html').on('click', function(e) {-->
+<!--//            if (typeof $(e.target).data('original-title') == 'undefined') {-->
+<!--//                $('[data-original-title]').popover('hide');-->
+<!--//            }-->
+<!--//        });-->
+
+
+
+<!--<p>Want to see this:</p>-->
+
+<!--<div class="fa fa-info-circle HelperInfo" id="11121/1015-6779-1645-7537-CC" >-->
+    <!--<div class="HelperInfoContent" id="11121/1015-6779-1645-7537-CC">-->
+        <!--Hello world!-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="citation-badge HelperInfo" id="11121/1015-6779-1645-7537-CC" >-->
+    <!--<div class="HelperInfoContent" id="11121/1015-6779-1645-7537-CC">-->
+        <!--Hello world!-->
+    <!--</div>-->
+<!--</div>-->
